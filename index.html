@@ -104,10 +104,10 @@ footer{margin-top:38px;padding:24px 0;border-top:1px solid var(--line);display:f
 <body>
 <header class="topbar">
   <a class="brand" href="#"><span class="logo">∑</span><span>ExamenKompas</span></a>
-  <nav class="nav"><a href="#vakken">Vakken</a><a href="#werkwijze">Zo werkt het</a><a class="pill" href="#voorbeeld">Probeer een opgave ↗</a></nav>
+  <nav class="nav"><a href="#vakken">Vakken</a><a href="#dashboard">Mijn dashboard</a><a class="pill" href="#voorbeeld">Probeer een opgave ↗</a></nav>
 </header>
 <main class="wrap">
-  <div class="crumb">Home / Wiskunde / Examenvoorbereiding</div>
+  
   <section class="hero">
     <div>
       <span class="eyebrow">✦ Slim oefenen. Zelfverzekerd examen doen.</span>
@@ -123,8 +123,6 @@ footer{margin-top:38px;padding:24px 0;border-top:1px solid var(--line);display:f
     </div>
   </section>
 
-  <section aria-label="Nieuwe examentrainer" style="margin:26px 0;padding:24px;border-radius:22px;background:linear-gradient(115deg,#183153,#315fe7);color:white"><div style="display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap"><div><span style="font-size:.85rem;font-weight:800;color:#d9fbe9">NIEUW · 100% GRATIS</span><h2 style="margin:6px 0;color:white">Probeer de interactieve examentrainer</h2><p style="margin:0;max-width:620px">Eén vraag per scherm, directe antwoordcontrole, duidelijke uitwerkingen en tips voor deelpunten. Nu beschikbaar als demo met originele voorbeeldopgaven.</p></div><a href="/examentrainer.html" style="display:inline-block;padding:13px 20px;border-radius:12px;background:white;color:#183153;font-weight:850;text-decoration:none">Start gratis oefenen →</a></div></section>
-<section id="leerpaginas" style="margin:30px 0;padding:24px;background:white;border:1px solid #e0e7f0;border-radius:20px"><h2>Ontdek de wiskundepagina's</h2><p>Gratis examengerichte uitleg en originele oefenopgaven per leerroute.</p><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" style="background:#e8f1ff;color:#183153" href="/havo-wiskunde-a.html">Havo wiskunde A →</a><a class="btn" style="background:#e8f1ff;color:#183153" href="/havo-wiskunde-b.html">Havo wiskunde B →</a><a class="btn" style="background:#e8f1ff;color:#183153" href="/vwo-wiskunde-a.html">Vwo wiskunde A →</a><a class="btn" style="background:#e8f1ff;color:#183153" href="/vwo-wiskunde-b.html">Vwo wiskunde B →</a><a class="btn" style="background:#d9fbe9;color:#183153" href="/examentips.html">Examentips →</a></div></section>
   <section id="vakken">
     <div class="section-head"><div><h2>Kies jouw examenroute</h2><p>Gericht oefenen per niveau en wiskundevak.</p></div><a class="link" href="#voorbeeld">Bekijk voorbeeldopgave →</a></div>
     <div class="route-tabs" role="tablist" aria-label="Kies een leerroute">
@@ -136,23 +134,24 @@ footer{margin-top:38px;padding:24px 0;border-top:1px solid var(--line);display:f
     <div class="route-panel" id="routePanel" role="tabpanel" aria-live="polite"></div>
   </section>
 
-  <section id="werkwijze" class="feature-grid">
-    <div class="feature colorful"><h3>📚 Een verhaal achter elke opgave</h3><p>Je rekent bijvoorbeeld aan een achtbaan, een brug, een medicijnconcentratie of de groei van een online dienst. De context helpt je bepalen welke wiskunde je nodig hebt.</p></div>
-    <div class="feature"><h3>🎯 Eén opgave tegelijk</h3><p>Geen drukke pagina met zes sommen naast elkaar. Lees de context, werk rustig aan de deelvragen en open daarna de uitwerking.</p></div>
-  </section>
-
-  <section id="dashboard" class="sample"><div class="section-head"><div><h2>Mijn voortgang</h2><p>Je voortgang wordt alleen in deze browser opgeslagen. De punten ken je zelf toe op basis van het correctiemodel.</p></div></div><div id="dashboardCards" class="dashboard-grid"></div>
-<div style="margin-top:22px;padding:22px;border:1px solid #d8e5fb;border-radius:18px;background:linear-gradient(115deg,#eff5ff,#f4f0ff)">
-  <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
-    <div style="flex:1;min-width:240px">
-      <span class="tag green">NIEUW · GRATIS EXAMENTRAINER</span>
-      <h3 style="margin:10px 0 6px">Examentraining in jouw dashboard</h3>
-      <p style="margin:0;color:var(--muted)">Oefen één vraag per scherm, controleer direct je eindantwoord en bekijk de volledige uitwerking met puntenverdeling. De demo bevat vier originele voorbeeldopgaven.</p>
-      <p id="examTrainerDashboardProgress" style="font-size:.9rem;font-weight:750;margin:10px 0 0">Voortgang wordt geladen…</p>
+  <section id="dashboard" class="sample" style="padding:26px;margin-top:28px">
+    <div class="section-head"><div><h2>Mijn dashboard</h2><p>Alles om verder te oefenen, overzichtelijk op één plek.</p></div></div>
+    <div class="dashboard-grid" style="margin-top:14px">
+      <div class="dash-card" style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-size:.8rem;color:var(--muted);font-weight:750">EXAMENTRAINER</span>
+        <h3 style="margin:0">Oefen examenvragen</h3>
+        <p id="examTrainerDashboardProgress" style="margin:0;color:var(--muted)">Voortgang wordt geladen…</p>
+        <a class="btn btn-primary" style="text-decoration:none;text-align:center;margin-top:auto" href="/examentrainer.html">Verder oefenen →</a>
+      </div>
+      <div class="dash-card" style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-size:.8rem;color:var(--muted);font-weight:750">MIJN OEFENINGEN</span>
+        <h3 style="margin:0">Voortgang per onderwerp</h3>
+        <p style="margin:0;color:var(--muted)">Bekijk je resultaten van de bestaande oefenroutes.</p>
+        <details style="margin-top:auto"><summary style="cursor:pointer;font-weight:800;color:var(--blue);padding:8px 0">Toon mijn resultaten</summary><div id="dashboardCards" class="dashboard-grid" style="margin-top:12px"></div></details>
+      </div>
     </div>
-    <a href="/examentrainer.html" class="btn btn-primary" style="display:inline-block;text-decoration:none;white-space:nowrap">Open examentrainer →</a>
-  </div>
-</div></section>
+    <p style="color:var(--muted);font-size:.84rem;margin:14px 0 0">Je voortgang blijft in deze browser. Scores voor open uitwerkingen zijn voorlopig zelfbeoordelingen.</p>
+  </section>
   <section id="voorbeeld" class="sample">
     <div class="sample-head"><div><span class="tag green">INTERACTIEVE TRAINING · HAVO 4–5 · WISKUNDE B</span><h2 id="exerciseTitle" style="margin-top:8px">De nieuwe fietsbrug</h2><p>Functies, afgeleiden en vergelijkingen · originele examenstijl</p></div><div><div id="counter" style="font-size:.82rem;color:var(--muted);margin-bottom:6px">Vraag 1 van 4</div><div class="progress"><span id="bar" style="width:25%"></span></div></div></div>
     <div class="trainer-tools"><label for="bankSelect"><strong>Kies oefening</strong> <select id="bankSelect" onchange="selectBank(this.value)"><option value="brug">De nieuwe fietsbrug</option><option value="achtbaan">Een nieuwe achtbaan</option><option value="zonnepark">De opbrengst van een zonnepark</option><optgroup label="HAVO 4–5 · Wiskunde B"><option value="havo_fiets">Fietstocht door de polder · functies</option><option value="havo_tuin">Een tuin ontwerpen · meetkunde</option><option value="havo_raket">Een modelraket · differentiëren</option><option value="havo_reuzenrad">Een reuzenrad · goniometrie</option></optgroup></select></label><span id="score">0 van 12 punten (zelfinschatting)</span><button class="btn btn-soft" onclick="resetTraining()">Opnieuw beginnen ↻</button></div>
