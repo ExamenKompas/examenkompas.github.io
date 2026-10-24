@@ -141,7 +141,18 @@ footer{margin-top:38px;padding:24px 0;border-top:1px solid var(--line);display:f
     <div class="feature"><h3>🎯 Eén opgave tegelijk</h3><p>Geen drukke pagina met zes sommen naast elkaar. Lees de context, werk rustig aan de deelvragen en open daarna de uitwerking.</p></div>
   </section>
 
-  <section id="dashboard" class="sample"><div class="section-head"><div><h2>Mijn voortgang</h2><p>Je voortgang wordt alleen in deze browser opgeslagen. De punten ken je zelf toe op basis van het correctiemodel.</p></div></div><div id="dashboardCards" class="dashboard-grid"></div></section>
+  <section id="dashboard" class="sample"><div class="section-head"><div><h2>Mijn voortgang</h2><p>Je voortgang wordt alleen in deze browser opgeslagen. De punten ken je zelf toe op basis van het correctiemodel.</p></div></div><div id="dashboardCards" class="dashboard-grid"></div>
+<div style="margin-top:22px;padding:22px;border:1px solid #d8e5fb;border-radius:18px;background:linear-gradient(115deg,#eff5ff,#f4f0ff)">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+    <div style="flex:1;min-width:240px">
+      <span class="tag green">NIEUW · GRATIS EXAMENTRAINER</span>
+      <h3 style="margin:10px 0 6px">Examentraining in jouw dashboard</h3>
+      <p style="margin:0;color:var(--muted)">Oefen één vraag per scherm, controleer direct je eindantwoord en bekijk de volledige uitwerking met puntenverdeling. De demo bevat vier originele voorbeeldopgaven.</p>
+      <p id="examTrainerDashboardProgress" style="font-size:.9rem;font-weight:750;margin:10px 0 0">Voortgang wordt geladen…</p>
+    </div>
+    <a href="/examentrainer.html" class="btn btn-primary" style="display:inline-block;text-decoration:none;white-space:nowrap">Open examentrainer →</a>
+  </div>
+</div></section>
   <section id="voorbeeld" class="sample">
     <div class="sample-head"><div><span class="tag green">INTERACTIEVE TRAINING · HAVO 4–5 · WISKUNDE B</span><h2 id="exerciseTitle" style="margin-top:8px">De nieuwe fietsbrug</h2><p>Functies, afgeleiden en vergelijkingen · originele examenstijl</p></div><div><div id="counter" style="font-size:.82rem;color:var(--muted);margin-bottom:6px">Vraag 1 van 4</div><div class="progress"><span id="bar" style="width:25%"></span></div></div></div>
     <div class="trainer-tools"><label for="bankSelect"><strong>Kies oefening</strong> <select id="bankSelect" onchange="selectBank(this.value)"><option value="brug">De nieuwe fietsbrug</option><option value="achtbaan">Een nieuwe achtbaan</option><option value="zonnepark">De opbrengst van een zonnepark</option><optgroup label="HAVO 4–5 · Wiskunde B"><option value="havo_fiets">Fietstocht door de polder · functies</option><option value="havo_tuin">Een tuin ontwerpen · meetkunde</option><option value="havo_raket">Een modelraket · differentiëren</option><option value="havo_reuzenrad">Een reuzenrad · goniometrie</option></optgroup></select></label><span id="score">0 van 12 punten (zelfinschatting)</span><button class="btn btn-soft" onclick="resetTraining()">Opnieuw beginnen ↻</button></div>
@@ -303,5 +314,15 @@ function move(n){state().answers[current]=el('answer').value;save();current=(cur
 function resetTraining(){if(!confirm('Alle antwoorden en scores van deze oefening wissen?'))return;progress[active]={answers:[],scores:[]};save();current=0;render()}
 function dashboard(){const host=el('dashboardCards');host.replaceChildren();Object.entries(banks).forEach(([key,b])=>{const st=progress[key]||{scores:[]};const max=b.questions.reduce((a,q)=>a+q.points,0);const sum=(st.scores||[]).reduce((a,v)=>a+(Number.isFinite(v)?v:0),0);const assessed=(st.scores||[]).filter(v=>Number.isFinite(v)).length;const card=document.createElement('div');card.className='dash-card';const h=document.createElement('strong');h.textContent=b.title;const p=document.createElement('p');p.textContent=assessed+' van '+b.questions.length+' vragen beoordeeld · '+sum+'/'+max+' punten';const meter=document.createElement('div');meter.className='progress';const fill=document.createElement('span');fill.style.width=(assessed/b.questions.length*100)+'%';meter.append(fill);const btn=document.createElement('button');btn.className='btn btn-soft';btn.textContent='Oefenen →';btn.onclick=()=>selectBank(key);card.append(h,p,meter,btn);host.append(card)})}
 el('answer').addEventListener('input',()=>{state().answers[current]=el('answer').value;save()});
+function renderExamTrainerDashboard(){
+ const target=document.getElementById('examTrainerDashboardProgress');if(!target)return;
+ try{const d=JSON.parse(localStorage.getItem('examenkompas-demo-v1')||'{}');
+ const count=[0,1,2,3].filter(i=>d[i]&&Number.isFinite(d[i].score)).length;
+ const points=[0,1,2,3].reduce((sum,i)=>sum+(Number.isFinite(d[i]?.score)?d[i].score:0),0);
+ target.textContent=count+' van 4 vragen beoordeeld · '+points+' van 13 punten (zelfbeoordeling)';
+ }catch(e){target.textContent='Begin met oefenen en volg hier je voortgang.'}
+}
+window.addEventListener('pageshow',renderExamTrainerDashboard);
+renderExamTrainerDashboard();
 showRoute('havo_b');render();
 </script></body></html>
