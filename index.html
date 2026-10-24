@@ -107,7 +107,7 @@ footer{margin-top:38px;padding:24px 0;border-top:1px solid var(--line);display:f
 <body>
 <header class="topbar">
   <a class="brand" href="#"><span class="logo">∑</span><span>ExamenKompas</span></a>
-  <nav class="nav"><a href="#vakken">Vakken</a><a href="#dashboard">Mijn dashboard</a><a class="pill" href="#voorbeeld">Probeer een opgave ↗</a></nav>
+  <nav class="nav"><a href="#vakken">Vakken</a><a class="pill" href="/leerroute.html?route=havo_b" target="_blank" rel="noopener">Probeer een opgave ↗</a></nav>
 </header>
 <main class="wrap">
   
@@ -116,7 +116,7 @@ footer{margin-top:38px;padding:24px 0;border-top:1px solid var(--line);display:f
       <span class="eyebrow">✦ Slim oefenen. Zelfverzekerd examen doen.</span>
       <h1>Niet alleen sommen maken.<br>Écht leren denken.</h1>
       <p>Train met nieuwe, verhalende wiskundeopgaven op examenniveau. Met heldere uitwerkingen, puntenverdeling en tips om te begrijpen waar je punten kunt verdienen.</p>
-      <div class="actions"><a class="btn btn-light" href="#vakken">Kies je vak <span>→</span></a><a class="btn btn-outline" href="#voorbeeld">Bekijk een voorbeeld</a></div>
+      <div class="actions"><a class="btn btn-light" href="#vakken">Kies je vak <span>→</span></a><a class="btn btn-outline" href="/leerroute.html?route=havo_b" target="_blank" rel="noopener">Bekijk een voorbeeld ↗</a></div>
     </div>
     <div class="hero-art" aria-hidden="true">
       <div class="orbit"></div><div class="orbit two"></div>
@@ -137,36 +137,6 @@ footer{margin-top:38px;padding:24px 0;border-top:1px solid var(--line);display:f
     <p class="route-note">Elke leerroute opent in een nieuw tabblad, met theorie, oefeningen en examentraining.</p>
   </section>
 
-  <section id="dashboard" class="sample" style="padding:26px;margin-top:28px">
-    <div class="section-head"><div><h2>Mijn dashboard</h2><p>Alles om verder te oefenen, overzichtelijk op één plek.</p></div></div>
-    <div class="dashboard-grid" style="margin-top:14px">
-      <div class="dash-card" style="display:flex;flex-direction:column;gap:10px">
-        <span style="font-size:.8rem;color:var(--muted);font-weight:750">EXAMENTRAINER</span>
-        <h3 style="margin:0">Oefen examenvragen</h3>
-        <p id="examTrainerDashboardProgress" style="margin:0;color:var(--muted)">Voortgang wordt geladen…</p>
-        <a class="btn btn-primary" href="/leerroute.html?route=havo_b" target="_blank" rel="noopener" style="text-align:center;text-decoration:none">Open interactieve training ↗</a><a href="/examentrainer.html" target="_blank" rel="noopener" style="font-weight:800;color:var(--blue);text-align:center">Examentrainer openen ↗</a><a href="/officiele-vragen-vwo-b-2025.html" target="_blank" rel="noopener" style="font-weight:800;color:var(--blue);text-align:center">Losse officiële examenvragen oefenen →</a>
-      </div>
-      <div class="dash-card" style="display:flex;flex-direction:column;gap:10px">
-        <span style="font-size:.8rem;color:var(--muted);font-weight:750">MIJN OEFENINGEN</span>
-        <h3 style="margin:0">Voortgang per onderwerp</h3>
-        <p style="margin:0;color:var(--muted)">Bekijk je resultaten van de bestaande oefenroutes.</p>
-        <details style="margin-top:auto"><summary style="cursor:pointer;font-weight:800;color:var(--blue);padding:8px 0">Toon mijn resultaten</summary><p style="color:var(--muted)">Je oefenresultaten vind je bij de betreffende leerroute.</p></details>
-      </div>
-    </div>
-    <p style="color:var(--muted);font-size:.84rem;margin:14px 0 0">Je voortgang blijft in deze browser. Scores voor open uitwerkingen zijn voorlopig zelfbeoordelingen.</p>
-  </section>
   <footer><span>∑ ExamenKompas · Conceptwebsite</span><span>Originele oefenopgaven · Geen officiële examenuitgaven</span></footer>
 </main>
-<script>
-function renderExamTrainerDashboard(){
- const target=document.getElementById('examTrainerDashboardProgress');
- if(!target)return;
- try{const d=JSON.parse(localStorage.getItem('examenkompas-demo-v1')||'{}');
- const count=[0,1,2,3].filter(i=>d[i]&&Number.isFinite(d[i].score)).length;
- const points=[0,1,2,3].reduce((sum,i)=>sum+(Number.isFinite(d[i]?.score)?d[i].score:0),0);
- target.textContent=count+' van 4 vragen beoordeeld · '+points+' van 13 punten (zelfbeoordeling)';
- }catch(e){target.textContent='Begin met oefenen en volg hier je voortgang.'}
-}
-window.addEventListener('pageshow',renderExamTrainerDashboard);
-renderExamTrainerDashboard();
-</script></body></html>
+</body></html>
