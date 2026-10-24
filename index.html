@@ -128,13 +128,13 @@ footer{margin-top:38px;padding:24px 0;border-top:1px solid var(--line);display:f
 
   <section id="vakken">
     <div class="section-head"><div><h2>Kies jouw examenroute</h2><p>Gericht oefenen per niveau en wiskundevak.</p></div><a class="link" href="#voorbeeld">Bekijk voorbeeldopgave →</a></div>
-    <div class="route-tabs" role="tablist" aria-label="Kies een leerroute">
-      <button class="route-tab" role="tab" aria-selected="true" aria-controls="routePanel" data-route="havo_b" onclick="showRoute('havo_b')">Havo · Wiskunde B</button>
-      <button class="route-tab" role="tab" aria-selected="false" aria-controls="routePanel" data-route="havo_a" onclick="showRoute('havo_a')">Havo · Wiskunde A</button>
-      <button class="route-tab" role="tab" aria-selected="false" aria-controls="routePanel" data-route="vwo_b" onclick="showRoute('vwo_b')">Vwo · Wiskunde B</button>
-      <button class="route-tab" role="tab" aria-selected="false" aria-controls="routePanel" data-route="vwo_a" onclick="showRoute('vwo_a')">Vwo · Wiskunde A</button>
+    <div class="route-tabs" aria-label="Kies een leerroute">
+      <a class="route-tab" href="/leerroute.html?route=havo_b" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center"> Havo · Wiskunde B ↗</a>
+      <a class="route-tab" href="/leerroute.html?route=havo_a" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center"> Havo · Wiskunde A ↗</a>
+      <a class="route-tab" href="/leerroute.html?route=vwo_b" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center"> Vwo · Wiskunde B ↗</a>
+      <a class="route-tab" href="/leerroute.html?route=vwo_a" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center"> Vwo · Wiskunde A ↗</a>
     </div>
-    <div class="route-panel" id="routePanel" role="tabpanel" aria-live="polite"></div>
+    <p class="route-note">Elke leerroute opent in een nieuw tabblad, met theorie, oefeningen en examentraining.</p>
   </section>
 
   <section id="dashboard" class="sample" style="padding:26px;margin-top:28px">
@@ -339,5 +339,5 @@ function renderExamTrainerDashboard(){
 }
 window.addEventListener('pageshow',renderExamTrainerDashboard);
 renderExamTrainerDashboard();
-showRoute('havo_b');render();
+render();
 </script></body></html>
