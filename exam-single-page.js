@@ -97,9 +97,9 @@
     const bottom=next?Math.max(markers.get(q)+23,markers.get(next)-92):base.height;
     if(!previous)return [[0,bottom]];
     // Neem voldoende introductietekst mee; die staat vaak direct na de vorige vraag.
-    const start=Math.max(0,Math.min(markers.get(previous)+38,markers.get(q)-90));
+    const start=Math.max(0,Math.min(markers.get(previous)+16,markers.get(q)-90));
     const firstKnown=nums.find(n=>markers.has(n));
-    const intro=Math.min(Math.max(0,markers.get(firstKnown)-18),base.height*.31);
+    const intro=Math.min(Math.max(0,markers.get(firstKnown)-28),base.height*.31);
     if(start<=intro+18)return [[0,bottom]];
     return [[0,intro],[start,bottom]];
   }
