@@ -81,7 +81,8 @@
     const bottom=next?Math.min(base.height,markers.get(next)+8):base.height;
     if(!previous)return [[0,bottom]];
     const start=Math.max(0,Math.min(markers.get(previous)+38,markers.get(q)-90));
-    const intro=Math.min(Math.max(0,markers.get(nums[0])-18),base.height*.31);
+    const firstKnown=nums.find(n=>markers.has(n));
+    const intro=Math.min(Math.max(0,markers.get(firstKnown)-18),base.height*.31);
     if(start<=intro+18)return [[0,bottom]];
     return [[0,intro],[start,bottom]];
   }

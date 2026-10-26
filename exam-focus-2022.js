@@ -43,7 +43,7 @@
   // Handmatig gecontroleerde uitsneden van originele examenbladen.
   // Elke vraag behoudt de gedeelde context bovenaan de oorspronkelijke pagina.
   const sections = {
-    1:[[.035,.495]], 2:[[.035,.165],[.475,.895]],
+    1:[[.035,.47]], 2:[[.035,.145],[.475,.895]],
     6:[[.035,.505]], 7:[[.035,.17],[.49,.925]],
     9:[[.035,.475]], 10:[[.04,.325],[.455,.81]],
     11:[[.035,.505]], 12:[[.035,.165],[.48,.925]],
