@@ -13,7 +13,7 @@
     .layout>.answer{grid-column:2!important;position:sticky!important;top:10px!important;max-height:calc(100dvh - 20px)!important;overflow-y:auto!important}
     .layout>main{grid-column:1!important;min-width:0!important}
     .hero{padding-top:10px!important;padding-bottom:10px!important}.hero h1{font-size:22px!important}
-    .ek-paper-single{position:relative;width:100%;height:calc(100dvh - 220px);min-height:385px;overflow:auto;background:#edf2f8;border:1px solid #dbe3ef;border-radius:12px;display:flex;align-items:center;justify-content:center;padding:9px}
+    .ek-paper-single{position:relative;width:100%;height:calc(100dvh - 300px);min-height:385px;overflow:auto;background:#edf2f8;border:1px solid #dbe3ef;border-radius:12px;display:flex;align-items:center;justify-content:center;padding:9px}
     .ek-paper-single canvas{display:block;width:auto;height:auto;max-width:100%;max-height:100%;background:#fff;box-shadow:0 4px 18px rgba(24,44,69,.13)}
     .ek-paper-single.ek-zoom{align-items:flex-start;justify-content:flex-start}
     .ek-paper-single.ek-zoom canvas{max-height:none;width:100%;height:auto}
@@ -22,6 +22,9 @@
     .ek-paper-info{margin-top:8px;font-size:12px;color:#536780;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
     .ek-paper-info button{border:1px solid #c8d7eb;border-radius:8px;background:#fff;color:#2457a8;font:700 12px system-ui;padding:7px 9px;cursor:pointer}
     .answer textarea{min-height:225px!important}
+    .ek-extra{border:1px solid #d9e3f1;border-radius:10px;margin-top:12px;background:#f9fbfe;overflow:hidden}
+    .ek-extra>summary{cursor:pointer;font-size:13px;font-weight:750;color:#375b88;padding:11px}
+    .ek-extra>div{padding:12px;border-top:1px solid #d9e3f1}
     @media(max-width:900px){.layout{grid-template-columns:minmax(0,1fr)!important;padding:10px!important}.layout>main,.layout>.answer{grid-column:1!important}.layout>.answer{position:static!important;max-height:none!important;overflow:visible!important}.ek-paper-single{height:min(68vh,660px);min-height:350px}}
     @media(max-width:540px){.ek-paper-single{height:55vh;min-height:310px;padding:5px}}
   `;
@@ -31,6 +34,19 @@
   for(const p of document.querySelectorAll('main p')){
     if(/Zoek de geselecteerde vraag|exacte paginakoppeling/i.test(p.textContent||''))p.hidden=true;
   }
+  const answerPanel=document.querySelector('.layout>.answer');
+  if(answerPanel){
+    const extras=[...answerPanel.querySelectorAll('.notice,.warning,.links,.sourcebox')];
+    if(extras.length){
+      const detail=document.createElement('details');detail.className='ek-extra';
+      const summary=document.createElement('summary');summary.textContent='Bronnen en extra informatie';
+      const body=document.createElement('div');extras.forEach(el=>body.append(el));
+      detail.append(summary,body);answerPanel.append(detail);
+    }
+  }
+  const prev=document.getElementById('prev'),next=document.getElementById('next');
+  if(prev)prev.textContent='← Vorige vraag';
+  if(next)next.textContent='Volgende vraag →';
 
   const host=document.createElement('div');
   host.id='paper';host.className='ek-paper-single';host.setAttribute('role','region');
@@ -78,9 +94,9 @@
     if(!markers.has(q))return [[0,base.height]];
     const previous=nums.filter(n=>n<q&&markers.has(n)).at(-1);
     const next=nums.find(n=>n>q&&markers.has(n));
-    const bottom=next?Math.min(base.height,markers.get(next)+8):base.height;
+    const bottom=next?Math.max(markers.get(q)+23,markers.get(next)-92):base.height;
     if(!previous)return [[0,bottom]];
-    const start=Math.max(0,Math.min(markers.get(previous)+38,markers.get(q)-90));
+    const start=Math.max(0,Math.min(markers.get(previous)+68,markers.get(q)-90));
     const firstKnown=nums.find(n=>markers.has(n));
     const intro=Math.min(Math.max(0,markers.get(firstKnown)-18),base.height*.31);
     if(start<=intro+18)return [[0,bottom]];

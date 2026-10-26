@@ -11,7 +11,11 @@
     .banner .eyebrow,.banner .pill {display:none!important}
     .pane {padding:14px!important}.workspace-heading {padding:3px 0 10px!important}
     .workspace-heading h2 {font-size:17px!important}.page-actions {gap:7px!important}
-    .page-shell {height:calc(100dvh - 208px);min-height:430px!important;padding:9px!important;overflow:auto!important;align-items:center!important;background:#edf1f6!important}
+    .workspace-heading {display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;row-gap:6px!important}
+    .workspace-heading h2 {grid-column:1/-1!important;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .page-actions {grid-column:1!important;justify-content:flex-start!important}
+    #ek-zoom-toggle {grid-column:2!important}
+    .page-shell {height:calc(100dvh - 254px);min-height:405px!important;padding:9px!important;overflow:auto!important;align-items:center!important;background:#edf1f6!important}
     #page-picture {display:none!important}
     #ek-question-canvas {display:block;width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;background:white;box-shadow:0 4px 18px #20344a20}
     .page-shell.ek-zoom {align-items:flex-start!important;justify-content:flex-start!important}
@@ -44,7 +48,7 @@
   // Elke vraag behoudt de gedeelde context bovenaan de oorspronkelijke pagina.
   const sections = {
     1:[[.035,.47]], 2:[[.035,.145],[.475,.895]],
-    6:[[.035,.505]], 7:[[.035,.17],[.49,.925]],
+    6:[[.035,.505]], 7:[[.035,.17],[.475,.925]],
     9:[[.035,.475]], 10:[[.04,.325],[.455,.81]],
     11:[[.035,.505]], 12:[[.035,.165],[.48,.925]],
     13:[[.035,.54]], 14:[[.035,.17],[.515,.94]]
@@ -90,6 +94,7 @@
     document.getElementById('next-page').disabled=q===16;
     counter.textContent='Vraag '+q+' / 16';
     if(syncUrl)history.replaceState(null,'','?vraag='+q);
+    window.scrollTo(0,0);
     shell.classList.remove('ek-zoom');zoom.textContent='Vergroot opgave';
     cropQuestion(q);
   }
