@@ -1,0 +1,68 @@
+name: Synchroniseer officiële examen-PDF's
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/sync-exam-pdfs.yml
+permissions:
+  contents: write
+jobs:
+  examens:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Download officiële documenten en bepaal vraagnummers per blad
+        run: |
+          python -m pip install --quiet requests pymupdf
+          python - <<'PY'
+          import json, pathlib, re, time, requests, fitz
+          output=pathlib.Path("exam-pdfs")
+          output.mkdir(exist_ok=True)
+          subject_codes={("havo","a"):"1024",("havo","b"):"1025",("vwo","a"):"1024",("vwo","b"):"1025"}
+          pages={}
+          session=requests.Session()
+          session.headers.update({"User-Agent":"Mozilla/5.0 (compatible; ExamenKompas educational practice; source Examenblad.nl)"})
+          for (level,kind),code in subject_codes.items():
+            for year in range(2022,2026):
+              slug=f"{level}-{kind}-examen-{year}"
+              prefix="ha" if level=="havo" else "vw"
+              url=f"https://www.examenblad.nl/{year}/{level}/documenten/cse-1/{prefix}-{code}-a-{str(year)[-2:]}-1-o"
+              dest=output/f"{slug}.pdf"
+              if not dest.exists() or dest.stat().st_size<50000:
+                for attempt in range(4):
+                  try:
+                    response=session.get(url,timeout=90)
+                    response.raise_for_status()
+                    if not response.content.startswith(b"%PDF-"):
+                      raise ValueError(f"Not a PDF: {response.url}, {response.headers.get('Content-Type')}")
+                    dest.write_bytes(response.content)
+                    break
+                  except Exception as exc:
+                    print(f"Attempt {attempt+1} failed for {slug}: {exc}",flush=True)
+                    if attempt==3: raise
+                    time.sleep(3*(attempt+1))
+              doc=fitz.open(dest)
+              mapping={}
+              for page_idx,page in enumerate(doc):
+                txt=page.get_text(sort=True)
+                for match in re.finditer(r"(?m)\b\d{1,2}p\s+(\d{1,2})\b",txt):
+                  q=int(match.group(1))
+                  if 1<=q<=50 and str(q) not in mapping:
+                    mapping[str(q)]=page_idx+1
+              # Store only actual page numbers detected from official question labels.
+              pages[slug]={"pages":mapping,"pageCount":len(doc),"source":url}
+              print(slug,len(doc),"pagina's",len(mapping),"vragen",flush=True)
+          (output/"questions.json").write_text(json.dumps(pages,ensure_ascii=False,separators=(",",":")),encoding="utf-8")
+          PY
+      - name: Publiceer de ongewijzigde bron-PDFs en paginaverwijzingen
+        run: |
+          git config user.name "ExamenKompas automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add exam-pdfs/
+          if ! git diff --cached --quiet; then
+            git commit -m "Voeg officiële examen-PDF's toe voor eenbladweergave [skip ci]"
+            git push
+          fi
