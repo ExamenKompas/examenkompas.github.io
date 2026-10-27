@@ -89,4 +89,8 @@
   });
   const start=Number(new URLSearchParams(location.search).get('vraag'));
   setActiveQuestion(Number.isInteger(start)&&start>=1&&start<=16?start:1);
+
+  const gradingScript=document.createElement('script');
+  gradingScript.src='/exam-grading.js?v=1';
+  document.body.append(gradingScript);
 })();

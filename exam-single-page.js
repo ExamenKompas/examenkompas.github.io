@@ -113,4 +113,9 @@
       lastWidth=host.clientWidth;await render();
     }catch(e){msg('Examenblad tijdelijk niet beschikbaar',String(e.message||'Probeer het later opnieuw.'));}
   })();
+
+  // De gratis zelfnakijkfunctie wordt door alle examenjaren gedeeld.
+  const gradingScript=document.createElement('script');
+  gradingScript.src='/exam-grading.js?v=1';
+  document.body.append(gradingScript);
 })();
