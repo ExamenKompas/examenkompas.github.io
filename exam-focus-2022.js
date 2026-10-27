@@ -40,19 +40,9 @@
   const counter = document.getElementById('page-number');
   const zoom = document.createElement('button');
   zoom.type='button';zoom.className='btn';zoom.id='ek-zoom-toggle';
-  zoom.textContent='Vergroot opgave';
+  zoom.textContent='Vergroot pagina';
   document.querySelector('.page-actions').after(zoom);
-  zoom.onclick=()=>{const big=shell.classList.toggle('ek-zoom');zoom.textContent=big?'Passend tonen':'Vergroot opgave';};
-
-  // Handmatig gecontroleerde uitsneden van originele examenbladen.
-  // Elke vraag behoudt de gedeelde context bovenaan de oorspronkelijke pagina.
-  const sections = {
-    1:[[.035,.47]], 2:[[.035,.145],[.475,.895]],
-    6:[[.035,.505]], 7:[[.035,.17],[.475,.925]],
-    9:[[.035,.475]], 10:[[.04,.325],[.455,.81]],
-    11:[[.035,.505]], 12:[[.035,.165],[.48,.925]],
-    13:[[.035,.54]], 14:[[.035,.17],[.515,.94]]
-  };
+  zoom.onclick=()=>{const big=shell.classList.toggle('ek-zoom');zoom.textContent=big?'Passend tonen':'Vergroot pagina';};
   let active = 1;
   const originalSetPage = setPage;
 
@@ -64,21 +54,11 @@
     try {await preview.decode();}catch(_){return;}
     if(q!==active)return;
     const {naturalWidth:w,naturalHeight:h}=preview;
-    const cuts=sections[q]||[[.025,.95]];
-    const margin=12;
-    const cropX=Math.round(w*.055), cropWidth=Math.round(w*.89);
-    const pieces=cuts.map(([start,end])=>({y:Math.round(start*h),height:Math.round((end-start)*h)}));
-    canvas.width=cropWidth;
-    canvas.height=pieces.reduce((acc,p)=>acc+p.height,0)+(pieces.length-1)*margin;
+    canvas.width=w;
+    canvas.height=h;
     const ctx=canvas.getContext('2d');
-    ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);
-    let y=0;
-    for (const [i,p] of pieces.entries()) {
-      ctx.drawImage(preview,cropX,p.y,cropWidth,p.height,0,y,cropWidth,p.height);
-      y+=p.height;
-      if (i<pieces.length-1) {ctx.fillStyle='#edf2f8';ctx.fillRect(0,y,cropWidth,margin);y+=margin;}
-    }
-    canvas.setAttribute('aria-label','Originele examenopgave bij vraag '+q+' van 16');
+    ctx.drawImage(preview,0,0,w,h);
+    canvas.setAttribute('aria-label','Volledige originele examenpagina '+pageNumber+' bij vraag '+q);
     shell.scrollTop=0;
   }
 
@@ -95,7 +75,7 @@
     counter.textContent='Vraag '+q+' / 16';
     if(syncUrl)history.replaceState(null,'','?vraag='+q);
     window.scrollTo(0,0);
-    shell.classList.remove('ek-zoom');zoom.textContent='Vergroot opgave';
+    shell.classList.remove('ek-zoom');zoom.textContent='Vergroot pagina';
     cropQuestion(q);
   }
   document.getElementById('prev-page').textContent='← Vorige vraag';
