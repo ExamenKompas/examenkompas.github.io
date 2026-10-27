@@ -30,21 +30,16 @@ a{color:inherit;text-decoration:none}
 .nav .pill{background:white;color:var(--navy);padding:9px 14px;border-radius:999px;font-weight:750}
 .wrap{max-width:1120px;margin:auto;padding:28px 22px 64px}
 .crumb{color:var(--muted);font-size:.9rem;margin-bottom:18px}
-.hero{position:relative;overflow:hidden;border-radius:28px;background:linear-gradient(115deg,#183153 0%,#254b7b 58%,#4f46e5 100%);color:white;padding:36px;display:grid;grid-template-columns:1.2fr .8fr;gap:28px;min-height:275px}
-.eyebrow{display:inline-flex;gap:8px;align-items:center;background:#ffffff1f;border:1px solid #ffffff40;padding:6px 11px;border-radius:999px;font-size:.82rem;font-weight:700}
-h1{font-size:clamp(2rem,4vw,3.25rem);line-height:1.06;letter-spacing:-.045em;margin:18px 0 14px;max-width:650px}
-.hero p{max-width:590px;color:#e2eafa;font-size:1.06rem;margin:0 0 22px}
+.hero{position:relative;border:1px solid #dce6f3;border-radius:22px;background:linear-gradient(110deg,#fff 0%,#f0f5fc 100%);color:var(--navy);padding:38px 42px;min-height:0;box-shadow:0 6px 22px #17345b06}
+.eyebrow{display:inline-flex;align-items:center;background:#edf4ff;border:1px solid #d8e5f7;color:#3a659b;padding:5px 11px;border-radius:999px;font-size:.76rem;font-weight:750;letter-spacing:.035em}
+h1{font-size:clamp(2rem,3.5vw,2.75rem);line-height:1.15;letter-spacing:-.04em;margin:16px 0 12px;max-width:750px}
+.hero p{max-width:690px;color:#5a6e86;font-size:1rem;margin:0 0 22px}
 .actions{display:flex;gap:12px;flex-wrap:wrap}
-.btn{border:0;border-radius:13px;padding:12px 17px;font:inherit;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px}
-.btn-light{background:white;color:var(--navy)}
-.btn-outline{background:#ffffff12;color:white;border:1px solid #ffffff5c}
-.hero-art{align-self:center;justify-self:center;width:min(100%,310px);aspect-ratio:1/1;position:relative}
-.orbit{position:absolute;inset:8%;border:1px solid #ffffff48;border-radius:50%;transform:rotate(-24deg)}
-.orbit.two{inset:18%;transform:rotate(42deg)}
-.math-card{position:absolute;background:#fff;color:var(--navy);box-shadow:0 18px 55px #07172b55;border-radius:18px;padding:16px 18px;font-weight:800}
-.math-card.one{top:13%;left:1%;transform:rotate(-8deg);font-size:1.1rem}
-.math-card.two{right:0;top:39%;transform:rotate(7deg);background:var(--yellow);font-size:1.15rem}
-.math-card.three{bottom:8%;left:20%;transform:rotate(-4deg);background:var(--mint);font-size:1.05rem}
+.btn{border:0;border-radius:11px;padding:11px 17px;font:inherit;font-weight:750;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn-light{background:#285db9;color:white}
+.btn-light:hover{background:#214b97}
+.btn-outline{background:transparent;color:#305b94;border:1px solid #c4d5e9}
+.btn-outline:hover{background:#f3f7fd}
 .section-head{display:flex;justify-content:space-between;align-items:end;gap:18px;margin:34px 0 16px}
 .section-head h2{font-size:1.55rem;letter-spacing:-.03em;margin:0;color:var(--navy)}
 .section-head p{margin:4px 0 0;color:var(--muted)}
@@ -90,11 +85,13 @@ h1{font-size:clamp(2rem,4vw,3.25rem);line-height:1.06;letter-spacing:-.045em;mar
 .btn-soft{background:#edf2fa;color:var(--navy)}
 .feedback{margin-top:14px;font-weight:750}
 footer{margin-top:38px;padding:24px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;color:var(--muted);font-size:.88rem}
-@media(max-width:800px){.hero{grid-template-columns:1fr;padding:28px}.hero-art{width:230px;min-height:230px}.courses{grid-template-columns:1fr}.feature-grid{grid-template-columns:1fr}.question-layout{grid-template-columns:1fr}.q-side{border-right:0;border-bottom:1px solid var(--line);display:flex;gap:14px;align-items:center}.q-side h3{margin:0}.q-side p{display:none}.points{margin:0 0 0 auto}.q-content{padding:22px}.nav a:not(.pill){display:none}}
-@media(max-width:480px){.wrap{padding:20px 14px 40px}.hero{padding:23px}.hero-art{width:200px}.section-head{align-items:start;flex-direction:column}.sample-head{padding:17px}.q-content{padding:18px}}
+@media(max-width:800px){.hero{padding:28px}.courses{grid-template-columns:1fr}.feature-grid{grid-template-columns:1fr}.question-layout{grid-template-columns:1fr}.q-side{border-right:0;border-bottom:1px solid var(--line);display:flex;gap:14px;align-items:center}.q-side h3{margin:0}.q-side p{display:none}.points{margin:0 0 0 auto}.q-content{padding:22px}.nav a:not(.pill){display:none}}
+@media(max-width:480px){.wrap{padding:20px 14px 40px}.hero{padding:23px}.section-head{align-items:start;flex-direction:column}.sample-head{padding:17px}.q-content{padding:18px}}
 .trainer-tools{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:15px 22px;background:#eef4ff;border-bottom:1px solid var(--line);font-weight:750}.solution{margin-top:16px;padding:19px;border-radius:14px;background:#e0f8eb;border:1px solid #b9ebcf}.solution h3{margin-top:0}.solution li{margin:7px 0}.selfscore{margin-top:18px;padding:16px;border:1px solid var(--line);border-radius:14px;background:#fff}.selfscore p{color:var(--muted);font-size:.92rem}.pointbuttons{display:flex;gap:8px;flex-wrap:wrap}.scorebutton{padding:8px 14px;border:1px solid #b6c7df;background:#fff;border-radius:9px;cursor:pointer;font-weight:750}.scorebutton.selected{background:var(--blue);color:#fff}.navquestions{justify-content:space-between;margin-top:24px}button:disabled{opacity:.4;cursor:not-allowed}[hidden]{display:none!important}
  .dashboard-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.dash-card{border:1px solid var(--line);border-radius:16px;padding:20px;background:white}.dash-card p{font-size:.9rem;color:var(--muted)}.dash-card .progress{margin:12px 0 18px}.trainer-tools select{padding:9px;border:1px solid var(--line);border-radius:10px;background:white;color:var(--navy);max-width:240px}.trainer-tools{flex-wrap:wrap;gap:12px} 
-.route-tabs{display:flex;gap:9px;flex-wrap:wrap;margin:18px 0}.route-tab{border:1px solid #cbd8eb;background:white;color:var(--navy);border-radius:999px;padding:12px 17px;font-weight:800;cursor:pointer}.route-tab[aria-selected="true"]{background:var(--navy);color:white;border-color:var(--navy)}.route-panel{background:white;border:1px solid var(--line);border-radius:20px;padding:23px;margin-bottom:28px}.route-panel h3{color:var(--navy);margin:0 0 7px}.route-panel>p{color:var(--muted)}.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:13px;margin-top:18px}.topic-tile{background:#f6f9ff;border:1px solid #dce7f6;border-radius:14px;padding:18px;display:flex;flex-direction:column;align-items:flex-start;gap:9px}.topic-tile strong{color:var(--navy)}.topic-tile p{margin:0;color:var(--muted);font-size:.88rem}.topic-tile button{border:0;background:var(--blue);color:white;border-radius:9px;padding:10px 13px;cursor:pointer;font-weight:750}.topic-tile button:disabled{background:#e3e8f1;color:#68788e;opacity:1;cursor:default}.route-note{font-size:.9rem;color:var(--muted);margin-top:12px}
+.route-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:17px 0}.route-tab{display:flex;justify-content:center;align-items:center;min-height:58px;border:1px solid #d9e3ef;background:white;color:var(--navy);border-radius:12px;padding:12px 15px;font-size:.94rem;line-height:1.35;font-weight:720;cursor:pointer;transition:background .15s,border-color .15s}.route-tab:hover{background:#f8fbff;border-color:#acc6e7}.route-tab[aria-selected="true"]{background:var(--navy);color:white;border-color:var(--navy)}.route-panel{background:white;border:1px solid var(--line);border-radius:20px;padding:23px;margin-bottom:28px}.route-panel h3{color:var(--navy);margin:0 0 7px}.route-panel>p{color:var(--muted)}.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:13px;margin-top:18px}.topic-tile{background:#f6f9ff;border:1px solid #dce7f6;border-radius:14px;padding:18px;display:flex;flex-direction:column;align-items:flex-start;gap:9px}.topic-tile strong{color:var(--navy)}.topic-tile p{margin:0;color:var(--muted);font-size:.88rem}.topic-tile button{border:0;background:var(--blue);color:white;border-radius:9px;padding:10px 13px;cursor:pointer;font-weight:750}.topic-tile button:disabled{background:#e3e8f1;color:#68788e;opacity:1;cursor:default}.route-note{font-size:.9rem;color:var(--muted);margin-top:12px}
+@media(max-width:860px){.route-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.route-tabs{grid-template-columns:1fr}.route-tab{justify-content:flex-start;min-height:51px}}
 
 .learning-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.learning-tab{border:1px solid #ccd9ec;border-radius:11px;padding:11px 17px;background:#f5f8fe;color:var(--navy);font-weight:800;cursor:pointer}.learning-tab[aria-selected="true"]{background:var(--blue);color:#fff;border-color:var(--blue)}.learning-body{padding:20px;border:1px solid var(--line);border-radius:15px;background:#fbfcff}.theory-card{background:white;border:1px solid var(--line);padding:18px;border-radius:13px;margin:12px 0}.theory-card h4{margin:0 0 8px;color:var(--navy)}.theory-card p{margin:7px 0}.mathline{font-weight:800;background:#eef4ff;padding:10px 13px;border-radius:9px;display:inline-block}.lesson-check{margin-top:12px;background:#eaf9f1;border:1px solid #b7e6cd;padding:11px;border-radius:9px}.lesson-check input{margin-right:8px}.exam-advice{background:#fff5dc;border:1px solid #f3d98b;border-radius:12px;padding:17px;margin:14px 0}.learning-intro{color:var(--muted);margin-top:0}
 
@@ -117,26 +114,20 @@ footer{margin-top:38px;padding:24px 0;border-top:1px solid var(--line);display:f
   
   <section class="hero">
     <div>
-      <span class="eyebrow">✦ Slim oefenen. Zelfverzekerd examen doen.</span>
-      <h1>Begrijp de stof. Beheers de vragen. Pak de punten.</h1>
-      <p>Train met nieuwe, verhalende wiskundeopgaven op examenniveau. Met heldere uitwerkingen, puntenverdeling en tips om te begrijpen waar je punten kunt verdienen.</p>
-      <div class="actions"><a class="btn btn-light" href="#vakken">Kies je vak <span>→</span></a><a class="btn btn-outline" href="/havo-wiskunde-b-visueel.html" target="_blank" rel="noopener">Bekijk een voorbeeld ↗</a></div>
-    </div>
-    <div class="hero-art" aria-hidden="true">
-      <div class="orbit"></div><div class="orbit two"></div>
-      <div class="math-card one">f(x) = ax² + bx + c</div>
-      <div class="math-card two">∫ f(x) dx</div>
-      <div class="math-card three">Δy / Δx = helling</div>
+      <span class="eyebrow">GRATIS WISKUNDE OEFENEN · HAVO &amp; VWO</span>
+      <h1>Goed voorbereid op je wiskunde-examen.</h1>
+      <p>Oefen op jouw tempo met echte examens en gerichte opgaven. Kijk je antwoorden na met het correctiemodel en ontdek waar je punten kunt verdienen.</p>
+      <div class="actions"><a class="btn btn-light" href="#vakken">Kies je examenroute <span>→</span></a><a class="btn btn-outline" href="#echte-examens">Bekijk examens</a></div>
     </div>
   </section>
 
   <section id="vakken">
     <div class="section-head"><div><h2>Kies jouw examenroute</h2><p>Gericht oefenen per niveau en wiskundevak.</p></div><a class="link" href="/havo-wiskunde-b-visueel.html" target="_blank" rel="noopener">Bekijk voorbeeldopgave ↗</a></div>
     <div class="route-tabs" aria-label="Kies een leerroute">
-      <a class="route-tab" href="/havo-b-dashboard.html" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center"> Havo · Wiskunde B · Dashboard ↗</a>
-      <a class="route-tab" href="/leerroute.html?route=havo_a" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center"> Havo · Wiskunde A ↗</a>
-      <a class="route-tab" href="/leerroute.html?route=vwo_b" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center"> Vwo · Wiskunde B ↗</a>
-      <a class="route-tab" href="/leerroute.html?route=vwo_a" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center"> Vwo · Wiskunde A ↗</a>
+      <a class="route-tab" href="/leerroute.html?route=havo_b" target="_blank" rel="noopener">Havo · Wiskunde B ↗</a>
+      <a class="route-tab" href="/leerroute.html?route=havo_a" target="_blank" rel="noopener">Havo · Wiskunde A ↗</a>
+      <a class="route-tab" href="/leerroute.html?route=vwo_b" target="_blank" rel="noopener">Vwo · Wiskunde B ↗</a>
+      <a class="route-tab" href="/leerroute.html?route=vwo_a" target="_blank" rel="noopener">Vwo · Wiskunde A ↗</a>
     </div>
     <p class="route-note">Elke leerroute opent in een nieuw tabblad, met theorie, oefeningen en examentraining.</p>
   </section>
