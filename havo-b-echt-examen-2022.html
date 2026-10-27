@@ -48,4 +48,4 @@ const fmtTime=x=>[Math.floor(x/3600),Math.floor((x%3600)/60),x%60].map(n=>String
 function tick(){if(!timerRunning)return;timerRemaining=Math.max(0,timerRemaining-1);state.timerRemaining=timerRemaining;store();drawTime();if(!timerRemaining){clearInterval(timerInterval);timerRunning=false;drawTime()}}
 el('start-timer').onclick=()=>{timerRunning=!timerRunning;if(timerRunning){if(timerRemaining===0)timerRemaining=10800;timerInterval=setInterval(tick,1000)}else clearInterval(timerInterval);drawTime()};el('reset-timer').onclick=()=>{timerRunning=false;clearInterval(timerInterval);timerRemaining=10800;state.timerRemaining=timerRemaining;store();drawTime()};
 buildNav();const requestedQ=Number(new URLSearchParams(location.search).get('vraag'));setPage(Number.isInteger(requestedQ)&&requestedQ>=1&&requestedQ<=16?PAGE_OF_QUESTION[requestedQ]:3,Number.isInteger(requestedQ)&&requestedQ>=1&&requestedQ<=16?requestedQ:undefined);drawTime();
-</script><script src="/exam-focus-2022.js?v=4"></script></body></html>
+</script><script src="/exam-focus-2022.js?v=5"></script></body></html>
